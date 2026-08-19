@@ -1,0 +1,23 @@
+{
+  "model_source": "ML-08 saved Logistic Regression pipeline",
+  "scored_pages": 136830,
+  "flagged_pages": 77440,
+  "flagged_share": 0.5659577578016517,
+  "stable_pages": 59390,
+  "ml08_precision_at_10": 0.8,
+  "ml08_precision_at_20": 0.7,
+  "ml08_precision_at_50": 0.68,
+  "ml08_precision_at_100": 0.66,
+  "ml08_declining_rate": 0.58,
+  "high_risk_threshold": 0.6,
+  "high_value_threshold_impressions_90d": 2989.0,
+  "stale_days_threshold": 180,
+  "recent_update_review_days": 30,
+  "archetype_counts": {
+    "Stable": 59390,
+    "Low-Value Monitor": 42310,
+    "Position Push": 20207,
+    "Priority Refresh": 14842,
+    "Stale Watch": 81
+  }
+}
