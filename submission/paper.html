@@ -1,0 +1,2383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Which Pages Should an SEO Team Review First? | Uzair Ahmed</title>
+
+<meta name="description"
+content="A machine learning research paper investigating whether historical search-performance data can rank content-refresh opportunities for SEO teams.">
+
+<style>
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+:root {
+    --ink: #17212b;
+    --body: #34424d;
+    --muted: #66737d;
+
+    --paper: #ffffff;
+    --soft: #f6f8f7;
+    --soft-2: #fafbfa;
+
+    --line: #dce3df;
+
+    --green: #246b57;
+    --green-dark: #174c3e;
+    --green-light: #edf5f1;
+
+    --blue: #315f8c;
+    --blue-light: #f1f5f9;
+
+    --orange: #a95d2d;
+    --orange-light: #faf4ef;
+
+    --danger: #8c3d35;
+    --danger-light: #faf3f1;
+
+    --max-width: 1120px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--body);
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+    line-height: 1.75;
+}
+
+a {
+    color: var(--green);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+p {
+    max-width: 880px;
+    margin: 0 0 20px;
+}
+
+code {
+    background: #eef2f0;
+    color: #263a34;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+
+/* =========================================================
+   TOP NAVIGATION
+========================================================= */
+
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    background: rgba(255,255,255,0.97);
+    border-bottom: 1px solid var(--line);
+
+    backdrop-filter: blur(10px);
+}
+
+.topbar-inner {
+    max-width: var(--max-width);
+    margin: auto;
+    padding: 15px 24px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 25px;
+}
+
+.brand {
+    color: var(--ink);
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+}
+
+.nav {
+    display: flex;
+    gap: 17px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.nav a {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    max-width: var(--max-width);
+    margin: auto;
+
+    padding: 105px 24px 85px;
+}
+
+.eyebrow {
+    color: var(--green);
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+
+    margin-bottom: 22px;
+}
+
+h1,
+h2,
+h3 {
+    font-family: Georgia, "Times New Roman", serif;
+    color: var(--ink);
+}
+
+h1 {
+    max-width: 950px;
+
+    font-size: clamp(44px, 6vw, 76px);
+    line-height: 1.03;
+
+    letter-spacing: -0.04em;
+
+    margin: 0 0 30px;
+}
+
+.subtitle {
+    max-width: 850px;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: clamp(20px, 2.5vw, 27px);
+    line-height: 1.45;
+
+    color: var(--muted);
+
+    margin-bottom: 35px;
+}
+
+.author-block {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 25px;
+
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.author-block strong {
+    color: var(--ink);
+}
+
+
+/* =========================================================
+   MAIN PAPER
+========================================================= */
+
+main {
+    max-width: var(--max-width);
+    margin: auto;
+
+    padding: 0 24px 100px;
+}
+
+section {
+    border-top: 1px solid var(--line);
+
+    padding: 85px 0;
+}
+
+.section-number {
+    color: var(--green);
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+
+    margin-bottom: 12px;
+}
+
+h2 {
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1.12;
+
+    letter-spacing: -0.03em;
+
+    margin: 0 0 30px;
+}
+
+h3 {
+    font-size: 26px;
+    line-height: 1.25;
+
+    margin: 45px 0 17px;
+}
+
+.lead {
+    max-width: 900px;
+
+    color: #3e4b55;
+
+    font-size: 19px;
+    line-height: 1.7;
+
+    margin-bottom: 28px;
+}
+
+
+/* =========================================================
+   ABSTRACT
+========================================================= */
+
+.abstract {
+    background: var(--soft);
+
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--green);
+
+    border-radius: 10px;
+
+    padding: 38px 40px;
+}
+
+.abstract p {
+    max-width: 920px;
+    font-size: 17px;
+}
+
+
+/* =========================================================
+   INFO CARDS
+========================================================= */
+
+.info-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 16px;
+
+    margin: 35px 0;
+}
+
+.info-card {
+    border: 1px solid var(--line);
+
+    border-radius: 10px;
+
+    padding: 23px;
+
+    background: var(--soft-2);
+}
+
+.info-label {
+    color: var(--muted);
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    margin-bottom: 8px;
+}
+
+.info-value {
+    color: var(--ink);
+
+    font-size: 16px;
+    font-weight: 650;
+}
+
+
+/* =========================================================
+   TABLES
+========================================================= */
+
+.table-wrapper {
+    overflow-x: auto;
+
+    border: 1px solid var(--line);
+    border-radius: 10px;
+
+    margin: 30px 0;
+}
+
+table {
+    width: 100%;
+    min-width: 650px;
+
+    border-collapse: collapse;
+}
+
+th {
+    background: #f3f6f4;
+
+    color: var(--ink);
+
+    font-size: 13px;
+    font-weight: 750;
+
+    text-align: left;
+
+    padding: 15px 17px;
+
+    border-bottom: 1px solid var(--line);
+}
+
+td {
+    padding: 15px 17px;
+
+    font-size: 14px;
+
+    color: var(--body);
+
+    border-bottom: 1px solid var(--line);
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+.highlight-row td {
+    background: var(--green-light);
+
+    color: var(--ink);
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   FIGURES
+========================================================= */
+
+figure {
+    margin: 48px 0;
+}
+
+.figure-card {
+    background: var(--soft);
+
+    border: 1px solid var(--line);
+
+    border-radius: 10px;
+
+    padding: 18px;
+}
+
+.figure-card img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    border-radius: 6px;
+
+    background: white;
+}
+
+figcaption {
+    color: var(--muted);
+
+    font-size: 13px;
+    line-height: 1.6;
+
+    margin-top: 14px;
+}
+
+
+/* =========================================================
+   METHODOLOGY BOX
+========================================================= */
+
+.method-box {
+    background: #f4f7f5;
+
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--green);
+
+    border-radius: 10px;
+
+    padding: 28px 30px;
+
+    margin: 35px 0;
+}
+
+.method-box h3 {
+    margin-top: 0;
+}
+
+.method-box p {
+    color: var(--body);
+}
+
+
+/* =========================================================
+   LIMITATIONS
+========================================================= */
+
+.limitation-list {
+    display: grid;
+
+    gap: 13px;
+
+    margin-top: 30px;
+}
+
+.limitation {
+    background: var(--soft-2);
+
+    border: 1px solid var(--line);
+    border-left: 4px solid #aeb8b4;
+
+    border-radius: 8px;
+
+    padding: 21px 23px;
+
+    color: var(--body);
+}
+
+.limitation strong {
+    display: block;
+
+    color: var(--ink);
+
+    margin-bottom: 5px;
+}
+
+
+/* =========================================================
+   RECOMMENDATIONS
+========================================================= */
+
+.recommendations {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 18px;
+
+    margin-top: 35px;
+}
+
+.recommendation {
+    background: white;
+
+    border: 1px solid var(--line);
+
+    border-radius: 10px;
+
+    padding: 27px;
+
+    border-top: 4px solid #9ca7a3;
+}
+
+.recommendation.priority {
+    border-top-color: var(--green);
+}
+
+.recommendation.position {
+    border-top-color: var(--blue);
+}
+
+.recommendation.stale {
+    border-top-color: var(--orange);
+}
+
+.recommendation.monitor {
+    border-top-color: #8b8b70;
+}
+
+.recommendation-code {
+    color: var(--green);
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 0.1em;
+}
+
+.recommendation h3 {
+    margin: 9px 0 10px;
+}
+
+.count {
+    color: var(--ink);
+
+    font-size: 28px;
+    font-weight: 800;
+
+    margin: 10px 0 15px;
+}
+
+
+/* =========================================================
+   SAFETY BOX
+========================================================= */
+
+.safety-box {
+    background: var(--danger-light);
+
+    border: 1px solid #e5d0cb;
+    border-left: 4px solid var(--danger);
+
+    border-radius: 9px;
+
+    padding: 27px 30px;
+
+    margin-top: 35px;
+}
+
+.safety-box h3 {
+    color: var(--danger);
+
+    margin-top: 0;
+}
+
+.safety-box li {
+    margin-bottom: 9px;
+}
+
+
+/* =========================================================
+   NOTEBOOK LINKS
+========================================================= */
+
+.notebook-list {
+    display: grid;
+
+    gap: 10px;
+
+    margin-top: 25px;
+}
+
+.notebook {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 17px 19px;
+
+    border: 1px solid var(--line);
+
+    border-radius: 9px;
+
+    background: white;
+
+    transition: 0.15s ease;
+}
+
+.notebook:hover {
+    background: var(--green-light);
+
+    text-decoration: none;
+
+    transform: translateX(2px);
+}
+
+.notebook strong {
+    color: var(--ink);
+}
+
+.notebook span {
+    color: var(--muted);
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   FOOTER / ACKNOWLEDGMENTS
+========================================================= */
+
+footer {
+    background: #18242b;
+
+    color: #dce4e7;
+
+    padding: 70px 24px;
+}
+
+.footer-inner {
+    max-width: var(--max-width);
+
+    margin: auto;
+}
+
+footer h2 {
+    color: white;
+
+    font-size: 34px;
+
+    margin-bottom: 25px;
+}
+
+footer p {
+    max-width: 850px;
+
+    color: #cbd5d9;
+
+    font-size: 15px;
+}
+
+footer a {
+    color: #9fd1bf;
+}
+
+.footer-credit {
+    background: rgba(255,255,255,0.06);
+
+    border: 1px solid rgba(255,255,255,0.12);
+
+    border-radius: 8px;
+
+    padding: 20px 22px;
+
+    margin: 25px 0;
+}
+
+.footer-credit strong {
+    color: white;
+}
+
+.footer-meta {
+    border-top: 1px solid rgba(255,255,255,0.15);
+
+    margin-top: 38px;
+
+    padding-top: 22px;
+
+    color: #9eaaaf;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 760px) {
+
+    .topbar-inner {
+        padding: 13px 18px;
+    }
+
+    .nav {
+        display: none;
+    }
+
+    .hero {
+        padding: 60px 20px 55px;
+    }
+
+    main {
+        padding: 0 20px 70px;
+    }
+
+    section {
+        padding: 60px 0;
+    }
+
+    .info-grid,
+    .recommendations {
+        grid-template-columns: 1fr;
+    }
+
+    .abstract {
+        padding: 27px 25px;
+    }
+
+    .notebook {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
+<header class="topbar">
+
+<div class="topbar-inner">
+
+<div class="brand">
+FLYRANK · ML CAPSTONE
+</div>
+
+<nav class="nav">
+
+<a href="#abstract">Abstract</a>
+<a href="#introduction">Introduction</a>
+<a href="#data">Data</a>
+<a href="#methodology">Methodology</a>
+<a href="#results">Results</a>
+<a href="#limitations">Limitations</a>
+<a href="#recommendations">Recommendations</a>
+<a href="#reproducibility">Reproducibility</a>
+
+</nav>
+
+</div>
+
+</header>
+
+
+
+<!-- =====================================================
+     TITLE
+===================================================== -->
+
+<header class="hero">
+
+<div class="eyebrow">
+Machine Learning · Week 8 Capstone
+</div>
+
+<h1>
+Which Pages Should an SEO Team Review First?
+</h1>
+
+<div class="subtitle">
+A machine learning approach to ranking content-refresh opportunities
+using historical search and engagement performance.
+</div>
+
+<div class="author-block">
+
+<div>
+<strong>Uzair Ahmed</strong>
+</div>
+
+<div>
+FlyRank ML Internship
+</div>
+
+<div>
+Lane: Refresh / Content Opportunity Scoring
+</div>
+
+<div>
+August 2026
+</div>
+
+</div>
+
+</header>
+
+
+
+<main>
+
+
+<!-- =====================================================
+     00 ABSTRACT
+===================================================== -->
+
+<section id="abstract">
+
+<div class="section-number">
+00 · Abstract
+</div>
+
+<h2>
+Abstract
+</h2>
+
+<div class="abstract">
+
+<p>
+Large SEO content libraries make manual page-by-page review impractical, so this project asks whether historical search and engagement data can rank webpages for refresh review more effectively than a transparent rule-based approach. The study uses historical search-performance features from the April–May 2026 feature window and a June 2026 outcome window, with the target identifying pages whose June search impressions declined substantially relative to their historical level while ensuring the model uses only pre-outcome information. A Logistic Regression ranking model was evaluated against a transparent rule baseline using a client-grouped holdout, with 42 clients used for training and 11 held out for testing with no client overlap. On the held-out clients, the model achieved Precision@10 of 0.80 compared with 0.70 for the rule baseline, providing directional evidence that the learned ranking approach can improve prioritization over this baseline on the evaluated population rather than proving performance on future clients or periods. The final workflow converts the ranking signal into an auditable review queue with action archetypes and human-review safeguards, supporting editorial prioritization without automatically rewriting, publishing, deleting, redirecting, or otherwise changing webpages.
+
+</p>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     01 INTRODUCTION
+===================================================== -->
+
+<section id="introduction">
+
+<div class="section-number">
+01 · Introduction / Problem statement
+</div>
+
+<h2>
+Which pages deserve attention first?
+</h2>
+
+<p class="lead">
+Large websites can contain thousands or millions of webpages. Even when an
+SEO team has access to search-performance data, reviewing every page with
+equal attention is inefficient. The operational problem is therefore one
+of prioritization: given the information available about a page, which
+pages should an SEO specialist investigate first?
+</p>
+
+<p>
+This capstone studies whether historical search and engagement signals can
+be used to rank pages according to their observed risk of a substantial
+future decline in search impressions.
+</p>
+
+<p>
+The goal is deliberately narrower than predicting Google's ranking
+algorithm. Search visibility is affected by many factors outside this
+dataset, and the analysis does not attempt to reproduce Google's systems.
+Instead, the project focuses on a practical SEO decision that can be
+supported by historical performance data.
+</p>
+
+<h3>
+Decision supported
+</h3>
+
+<div class="info-grid">
+
+<div class="info-card">
+
+<div class="info-label">
+Research question
+</div>
+
+<div class="info-value">
+Can historical search-performance data rank refresh opportunities better
+than a transparent rule?
+</div>
+
+</div>
+
+
+<div class="info-card">
+
+<div class="info-label">
+Unit of analysis
+</div>
+
+<div class="info-value">
+One webpage represented by a content identifier within a client
+</div>
+
+</div>
+
+
+<div class="info-card">
+
+<div class="info-label">
+Output
+</div>
+
+<div class="info-value">
+Ranked, reason-coded review queue
+</div>
+
+</div>
+
+
+<div class="info-card">
+
+<div class="info-label">
+Decision
+</div>
+
+<div class="info-value">
+Which pages should an SEO team review first?
+</div>
+
+</div>
+
+</div>
+
+
+<h3>
+Why ranking rather than automatic classification?
+</h3>
+
+<p>
+The practical workflow does not require the model to decide that a webpage
+must be refreshed. Instead, the model is most useful if it can place pages
+that deserve investigation near the top of a review queue.
+</p>
+
+<p>
+This makes ranking metrics such as Precision@K particularly relevant.
+For example, Precision@10 asks how many of the ten highest-ranked pages
+belong to the target class. This mirrors the real situation in which an
+editor may only have enough time to inspect a small number of pages first.
+</p>
+
+<p>
+The cost of a false positive is primarily wasted editorial review time.
+The cost of a false negative is that a potentially declining page may not
+receive timely attention. The model therefore acts as decision support,
+with the final editorial decision remaining human.
+</p>
+
+</section>
+
+
+
+<!-- =====================================================
+     02 DATA
+===================================================== -->
+
+<section id="data">
+
+<div class="section-number">
+02 · Data
+</div>
+
+<h2>
+Data and study population
+</h2>
+
+<p class="lead">
+The analysis was built from the FlyRank ML Internship warehouse. Historical
+performance information was kept separate from the future outcome period
+so that the model could only use information that would have been available
+before the target outcome occurred.
+</p>
+
+<h3>
+Warehouse components
+</h3>
+
+<div class="table-wrapper">
+
+<table>
+
+<thead>
+
+<tr>
+<th>Component</th>
+<th>Grain</th>
+<th>Use in this study</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>
+<code>fact_content_daily_performance</code>
+</td>
+
+<td>
+Report date × client × content
+</td>
+
+<td>
+Historical search-performance aggregation and outcome construction
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+<code>dim_content</code>
+</td>
+
+<td>
+Content item
+</td>
+
+<td>
+Content update information used by the refresh-action logic
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+
+<h3>
+Time-window design
+</h3>
+
+<div class="info-grid">
+
+<div class="info-card">
+
+<div class="info-label">
+Feature window
+</div>
+
+<div class="info-value">
+April–May 2026
+</div>
+
+</div>
+
+<div class="info-card">
+
+<div class="info-label">
+Outcome window
+</div>
+
+<div class="info-value">
+June 2026
+</div>
+
+</div>
+
+</div>
+
+<p>
+The model features were calculated from historical April–May performance.
+The target was then constructed from June performance. This separation is
+central to the study because using future information to construct features
+would make the evaluation optimistic and unsuitable for a real
+prioritization workflow.
+</p>
+
+
+<h3>
+Study population
+</h3>
+
+<p>
+The feature-building stage produced 389,153 client-content records.
+After applying the historical impression floor required for a stable
+percentage-change target, the final evaluated population contained
+136,830 pages across 53 clients.
+</p>
+
+<div class="table-wrapper">
+
+<table>
+
+<thead>
+
+<tr>
+<th>Measure</th>
+<th>Value</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+<td>Initial feature records</td>
+<td>389,153</td>
+</tr>
+
+<tr class="highlight-row">
+<td>Final evaluated pages</td>
+<td>136,830</td>
+</tr>
+
+<tr>
+<td>Clients</td>
+<td>53</td>
+</tr>
+
+<tr>
+<td>Historical impression floor</td>
+<td>100 impressions</td>
+</tr>
+
+<tr>
+<td>Declining-label rate</td>
+<td>58.0%</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+
+<h3>
+Exclusions and public-safety boundaries
+</h3>
+
+<p>
+Rows without the required search-performance coverage were excluded from
+the feature-building process. Pages with fewer than 100 historical
+impressions were excluded from the evaluated population because percentage
+changes based on very small historical denominators can be unstable.
+</p>
+
+<p>
+The model does not use client identifiers or content identifiers as
+predictive features. These identifiers are used only for joins and grouped
+validation.
+</p>
+
+<p>
+Variables derived from the future outcome were also excluded from the final
+feature set. In particular, target-derived trend fields were not allowed
+to become model inputs.
+</p>
+
+<p>
+The public paper intentionally contains no client names, domains, URLs,
+private search queries, credentials, or raw warehouse exports.
+Identifiers used internally remain pseudonymous.
+</p>
+
+</section>
+
+
+
+<!-- =====================================================
+     03 METHODOLOGY
+===================================================== -->
+
+<section id="methodology">
+
+<div class="section-number">
+03 · Methodology
+</div>
+
+<h2>
+Model, baseline, and validation
+</h2>
+
+<p class="lead">
+The modeling workflow was designed around four principles: historical
+features only, an explicit outcome definition, a transparent baseline, and
+validation that keeps client identities separated between training and
+testing.
+</p>
+
+
+<h3>
+Label definition
+</h3>
+
+<div class="method-box">
+
+<h3>
+Observed decline
+</h3>
+
+<p>
+A page is assigned <code>is_declining_label = 1</code> when its June
+impressions are at least 70% below its April–May historical level.
+</p>
+
+<p>
+In percentage-change notation:
+</p>
+
+<p>
+<strong>
+is_declining_label = 1 when impressions_change_pct ≤ −70%
+</strong>
+</p>
+
+<p>
+The −70% threshold was selected to focus the analysis on a substantial
+decline rather than ordinary short-term movement.
+</p>
+
+</div>
+
+
+<h3>
+Predictive features
+</h3>
+
+<div class="table-wrapper">
+
+<table>
+
+<thead>
+
+<tr>
+<th>Feature</th>
+<th>Meaning</th>
+<th>Information period</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+<td><code>impressions_90d</code></td>
+<td>Total historical search impressions</td>
+<td>April–May 2026</td>
+</tr>
+
+<tr>
+<td><code>clicks_90d</code></td>
+<td>Total historical search clicks</td>
+<td>April–May 2026</td>
+</tr>
+
+<tr>
+<td><code>avg_position_90d</code></td>
+<td>Historical impression-weighted average position</td>
+<td>April–May 2026</td>
+</tr>
+
+<tr>
+<td><code>ctr_90d</code></td>
+<td>Historical click-through rate</td>
+<td>April–May 2026</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+
+<h3>
+Transparent rule baseline
+</h3>
+
+<p>
+Before fitting the learned model, the project established a transparent
+rule-based ranking score. The baseline combines three normalized signals
+with fixed weights.
+</p>
+
+<div class="table-wrapper">
+
+<table>
+
+<thead>
+
+<tr>
+<th>Baseline component</th>
+<th>Weight</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+<td>Historical impressions</td>
+<td>0.50</td>
+</tr>
+
+<tr>
+<td>Average position</td>
+<td>0.30</td>
+</tr>
+
+<tr>
+<td>Staleness</td>
+<td>0.20</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+<p>
+This baseline is useful because it is transparent and easy for an SEO team
+to understand. It also provides a concrete benchmark against which the
+learned ranking model can be evaluated.
+</p>
+
+
+<h3>
+Logistic Regression model
+</h3>
+
+<p>
+The final model uses a scikit-learn pipeline consisting of median
+imputation, standard scaling, and Logistic Regression with
+<code>max_iter=1000</code> and <code>random_state=42</code>.
+</p>
+
+<p>
+Logistic Regression was selected as an interpretable first model rather
+than a deliberately complex ensemble. The objective of this capstone is
+not simply to maximize a benchmark score; it is to determine whether a
+repeatable and understandable learned ranking signal can improve the
+review-prioritization decision.
+</p>
+
+
+<h3>
+Grouped validation
+</h3>
+
+<p>
+The primary evaluation uses <strong>GroupShuffleSplit</strong> with
+<code>client_hash_id</code> as the grouping variable.
+</p>
+
+<div class="table-wrapper">
+
+<table>
+
+<thead>
+
+<tr>
+<th>Split component</th>
+<th>Value</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+<td>Training clients</td>
+<td>42</td>
+</tr>
+
+<tr>
+<td>Held-out test clients</td>
+<td>11</td>
+</tr>
+
+<tr>
+<td>Client overlap</td>
+<td>0</td>
+</tr>
+
+<tr>
+<td>Test rows</td>
+<td>45,599</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+<p>
+A row-level random split was deliberately avoided. Multiple pages can
+belong to the same client and may share client-specific characteristics.
+Allowing the same client to appear in both train and test could therefore
+make performance appear stronger than it would be on an unseen client.
+</p>
+
+
+<h3>
+Leakage audit
+</h3>
+
+<p>
+The final feature set was checked against the outcome definition to ensure
+that the model did not directly or indirectly receive the target.
+June outcome fields and target-derived trend variables were excluded.
+Client and content identifiers were also excluded from the predictive
+feature matrix.
+</p>
+
+<p>
+The feature and outcome windows were kept separate: April–May information
+was used to construct predictors, while June information was reserved for
+the outcome.
+</p>
+
+<p>
+The validation work also included a deliberate leakage injection exercise.
+Adding the target to a toy model produced an obvious jump in performance,
+while removing it returned the model to its normal behavior. This provided
+an explicit check that the audit harness could detect direct target
+leakage.
+</p>
+
+</section>
+
+
+
+<!-- =====================================================
+     04 RESULTS
+===================================================== -->
+
+<section id="results">
+
+<div class="section-number">
+04 · Results
+</div>
+
+<h2>
+Results
+</h2>
+
+<p class="lead">
+The primary question is whether the learned ranking model places more
+declining pages near the top of the review queue than the transparent
+baseline on the same held-out clients.
+</p>
+
+
+<h3>
+Model versus baseline
+</h3>
+
+<div class="table-wrapper">
+
+<table>
+
+<thead>
+
+<tr>
+<th>Metric</th>
+<th>Rule baseline</th>
+<th>Logistic Regression</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr class="highlight-row">
+<td>Precision@10</td>
+<td>0.70</td>
+<td>0.80</td>
+</tr>
+
+<tr>
+<td>Precision@20</td>
+<td>0.65</td>
+<td>0.70</td>
+</tr>
+
+<tr>
+<td>Precision@50</td>
+<td>0.66</td>
+<td>0.68</td>
+</tr>
+
+<tr>
+<td>Precision@100</td>
+<td>0.64</td>
+<td>0.66</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+
+<figure>
+
+<div class="figure-card">
+
+<img
+src="figures/precision_comparison.png"
+alt="Precision at K comparison between the transparent baseline and Logistic Regression model"
+onerror="this.style.display='none'; this.parentElement.innerHTML='<p style=&quot;padding:30px;text-align:center;color:#66737d;&quot;>Figure 1 could not be loaded. Check that <strong>precision_comparison.png</strong> is inside the figures folder next to this HTML file.</p>';"
+>
+
+</div>
+
+<figcaption>
+
+<strong>Figure 1.</strong>
+Precision@K comparison between the transparent rule baseline and the
+Logistic Regression model on the same client-grouped evaluation design.
+
+</figcaption>
+
+</figure>
+
+
+<h3>
+Primary finding
+</h3>
+
+<p>
+On the held-out clients, the Logistic Regression model achieved
+Precision@10 of 0.80 compared with 0.70 for the rule baseline. In practical
+terms, eight of the ten highest-ranked pages in this evaluation belonged
+to the declining target class under the model, compared with seven of the
+ten highest-ranked pages under the baseline.
+</p>
+
+<p>
+The model also outperformed the baseline at Precision@20, Precision@50,
+and Precision@100, although the difference becomes smaller as the queue
+gets deeper.
+</p>
+
+<p>
+The appropriate interpretation is therefore not that the model is
+"correct" about every page. Rather, the evidence suggests that it can
+improve the concentration of target pages near the top of the review queue
+relative to this particular transparent baseline.
+</p>
+
+
+<h3>
+Model interpretation
+</h3>
+
+<p>
+Because the model is Logistic Regression with standardized features, its
+coefficients provide a relatively interpretable summary of the direction
+and relative magnitude of the learned associations.
+</p>
+
+<div class="table-wrapper">
+
+<table>
+
+<thead>
+
+<tr>
+<th>Feature</th>
+<th>Standardized coefficient</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr class="highlight-row">
+<td><code>ctr_90d</code></td>
+<td>−0.669</td>
+</tr>
+
+<tr>
+<td><code>avg_position_90d</code></td>
+<td>−0.192</td>
+</tr>
+
+<tr>
+<td><code>impressions_90d</code></td>
+<td>−0.105</td>
+</tr>
+
+<tr>
+<td><code>clicks_90d</code></td>
+<td>−0.070</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+<p>
+Historical CTR has the largest standardized coefficient among the four
+features in the fitted model. This indicates that CTR contributes more
+strongly to the model's learned ranking signal than the other included
+features after standardization.
+</p>
+
+<p>
+This should be interpreted as an association within this dataset and
+validation design. It should not be interpreted as evidence that CTR
+causes future visibility decline.
+</p>
+
+
+<h3>
+Classification errors at a 0.5 threshold
+</h3>
+
+<p>
+Although the capstone is fundamentally a ranking problem, examining
+threshold-based classification errors helps show why the final workflow
+does not use the model as an automatic yes/no decision system.
+</p>
+
+<div class="table-wrapper">
+
+<table>
+
+<thead>
+
+<tr>
+<th>Outcome at 0.5 threshold</th>
+<th>Count</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+<td>Correct classifications</td>
+<td>26,910</td>
+</tr>
+
+<tr>
+<td>False positives</td>
+<td>15,630</td>
+</tr>
+
+<tr>
+<td>False negatives</td>
+<td>3,059</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+<p>
+These errors reinforce the operational framing: the model is more
+appropriate as a ranking signal for prioritization than as an autonomous
+binary decision-maker.
+</p>
+
+</section>
+
+
+
+<!-- =====================================================
+     05 LIMITATIONS
+===================================================== -->
+
+<section id="limitations">
+
+<div class="section-number">
+05 · Limitations & honest framing
+</div>
+
+<h2>
+What the evidence does — and does not — support
+</h2>
+
+<p class="lead">
+A useful research artifact should make its boundaries explicit. The
+following limitations determine how the reported results should be used.
+</p>
+
+
+<div class="limitation-list">
+
+<div class="limitation">
+
+<strong>
+Evaluation population is smaller than the scoring population
+</strong>
+
+The model was evaluated on 11 held-out clients, while the final scoring
+workflow covers 53 clients. The measured Precision@10 therefore describes
+the evaluation population and should not be treated as a guarantee for all
+future scored pages.
+
+</div>
+
+
+<div class="limitation">
+
+<strong>
+Grouped evaluation contains relatively few clients per split
+</strong>
+
+Client-level grouping is more appropriate than a random row split for this
+problem, but the number of held-out clients remains limited. Performance
+estimates can therefore vary across groups.
+
+</div>
+
+
+<div class="limitation">
+
+<strong>
+The result is correlational
+</strong>
+
+The model identifies statistical associations with the observed decline
+label. It does not demonstrate that any feature causes decline.
+
+</div>
+
+
+<div class="limitation">
+
+<strong>
+A refresh is not guaranteed to recover performance
+</strong>
+
+The analysis identifies pages that may deserve investigation. It does not
+test whether editing, rewriting, improving internal links, changing
+metadata, or otherwise refreshing those pages causes their search
+performance to improve.
+
+</div>
+
+
+<div class="limitation">
+
+<strong>
+The model observes only a limited set of signals
+</strong>
+
+Important factors such as content quality, search intent, seasonality,
+competitor changes, algorithm changes, editorial priorities, and broader
+business context are not directly represented in the four-feature model.
+
+</div>
+
+
+<div class="limitation">
+
+<strong>
+The baseline is intentionally simple
+</strong>
+
+The model beating this baseline demonstrates improvement over this
+specific transparent rule. It does not establish superiority over a
+production-grade SEO prioritization system or over more advanced machine
+learning approaches.
+
+</div>
+
+
+<div class="limitation">
+
+<strong>
+This is a snapshot rather than a long-term monitoring study
+</strong>
+
+Future labeled windows are needed to determine how stable the ranking
+signal is over time and whether feature distributions or model performance
+drift.
+
+</div>
+
+</div>
+
+
+<figure>
+
+<div class="figure-card">
+
+<img
+src="figures/staleness_weak_signal.png"
+alt="Staleness signal audit showing median impressions across content-age buckets"
+onerror="this.style.display='none'; this.parentElement.innerHTML='<p style=&quot;padding:30px;text-align:center;color:#66737d;&quot;>Figure 2 could not be loaded. Check that <strong>staleness_weak_signal.png</strong> is inside the figures folder.</p>';"
+>
+
+</div>
+
+<figcaption>
+
+<strong>Figure 2.</strong>
+Staleness signal audit from the earlier baseline analysis. The relationship
+between content age and search visibility is not sufficiently clean to
+treat staleness alone as a reliable refresh-priority signal.
+
+</figcaption>
+
+</figure>
+
+
+<h3>
+Claim ladder
+</h3>
+
+<div class="table-wrapper">
+
+<table>
+
+<thead>
+
+<tr>
+<th>Claim level</th>
+<th>What this study supports</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+<td>Observed</td>
+<td>
+The model achieved higher Precision@K than the rule baseline on the
+evaluated client-grouped holdout.
+</td>
+</tr>
+
+<tr>
+<td>Directional</td>
+<td>
+Historical search-performance signals may provide a useful ranking signal
+for refresh prioritization.
+</td>
+</tr>
+
+<tr>
+<td>Decision-support</td>
+<td>
+The score can help an SEO team decide which pages to inspect first.
+</td>
+</tr>
+
+<tr>
+<td>Not supported</td>
+<td>
+The study does not prove Google's ranking algorithm, causality, or that
+refreshing a ranked page will restore traffic.
+</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     06 RECOMMENDATIONS
+===================================================== -->
+
+<section id="recommendations">
+
+<div class="section-number">
+06 · Ranked recommendations
+</div>
+
+<h2>
+The action playbook
+</h2>
+
+<p class="lead">
+The model score becomes operationally useful only when an SEO team can
+translate it into a manageable review queue. The final workflow therefore
+groups scored pages into auditable action archetypes.
+</p>
+
+<p>
+These archetypes are not additional machine-learning predictions. They are
+simple post-scoring rules designed to connect model ranking with practical
+editorial review decisions.
+</p>
+
+
+<figure>
+
+<div class="figure-card">
+
+<img
+src="figures/archetype_composition.png"
+alt="Composition of pages across the action archetypes"
+onerror="this.style.display='none'; this.parentElement.innerHTML='<p style=&quot;padding:30px;text-align:center;color:#66737d;&quot;>Figure 3 could not be loaded. Check that <strong>archetype_composition.png</strong> is inside the figures folder.</p>';"
+>
+
+</div>
+
+<figcaption>
+
+<strong>Figure 3.</strong>
+Composition of the 136,830-page scoring population across the action
+archetypes developed in the Week-7 action playbook.
+
+</figcaption>
+
+</figure>
+
+
+<div class="recommendations">
+
+
+<article class="recommendation priority">
+
+<div class="recommendation-code">
+REF-01 · HIGHEST PRIORITY
+</div>
+
+<h3>
+Priority Refresh
+</h3>
+
+<div class="count">
+14,842 pages
+</div>
+
+<p>
+Pages with higher model-ranked decline risk and relatively high historical
+search impressions. These pages should receive the first round of human
+review because there is meaningful historical visibility to protect.
+</p>
+
+</article>
+
+
+<article class="recommendation position">
+
+<div class="recommendation-code">
+REF-02 · SECOND PRIORITY
+</div>
+
+<h3>
+Position Push
+</h3>
+
+<div class="count">
+20,207 pages
+</div>
+
+<p>
+Pages with higher model-ranked decline risk and historical average position
+between 10 and 20. These pages may warrant review of on-page relevance,
+internal linking, content structure, and other page-level opportunities
+before considering a full rewrite.
+</p>
+
+</article>
+
+
+<article class="recommendation stale">
+
+<div class="recommendation-code">
+REF-03 · WATCH
+</div>
+
+<h3>
+Stale Watch
+</h3>
+
+<div class="count">
+81 pages
+</div>
+
+<p>
+Pages with higher model-ranked decline risk that do not fall into the
+higher-value or position-focused groups but have remained unchanged for a
+longer period. These pages should receive a targeted freshness audit.
+</p>
+
+</article>
+
+
+<article class="recommendation monitor">
+
+<div class="recommendation-code">
+REF-04 · MONITOR
+</div>
+
+<h3>
+Low-Value Monitor
+</h3>
+
+<div class="count">
+42,310 pages
+</div>
+
+<p>
+Pages with higher model-ranked decline risk but relatively low historical
+search volume. These pages can be monitored and reconsidered during a
+later review cycle rather than consuming immediate editorial capacity.
+</p>
+
+</article>
+
+
+<article class="recommendation">
+
+<div class="recommendation-code">
+STB-01 · NO IMMEDIATE ACTION
+</div>
+
+<h3>
+Stable
+</h3>
+
+<div class="count">
+59,390 pages
+</div>
+
+<p>
+Pages below the selected high-risk scoring threshold. They are not part of
+the immediate flagged queue produced by this scoring cycle.
+</p>
+
+</article>
+
+</div>
+
+
+<h3>
+Human-review safeguards
+</h3>
+
+<div class="safety-box">
+
+<h3>
+The model recommends review — not automatic changes
+</h3>
+
+<ul>
+
+<li>
+Do not automatically publish, rewrite, delete, redirect, or otherwise
+modify a webpage solely because it receives a high model score.
+</li>
+
+<li>
+Recently updated pages should be manually checked before another refresh
+is recommended.
+</li>
+
+<li>
+Pages below the 100-impression historical floor are outside the evaluated
+population and should not receive model-supported recommendations.
+</li>
+
+<li>
+Sensitive-topic content such as legal, medical, or financial content
+requires additional expert review beyond this scoring workflow.
+</li>
+
+<li>
+The model score should be treated as one input into editorial
+prioritization, not as a replacement for SEO expertise.
+</li>
+
+</ul>
+
+</div>
+
+
+<h3>
+Monitoring and retraining triggers
+</h3>
+
+<p>
+A future implementation should track Precision@10 and other ranking
+metrics on newly labeled outcome windows. A substantial reduction in
+ranking performance should trigger investigation.
+</p>
+
+<p>
+The feature distributions should also be monitored. Large shifts in
+impressions, clicks, CTR, or average position may indicate that the
+training environment no longer represents the population being scored.
+</p>
+
+<p>
+As additional labeled outcome windows become available, retraining should
+be performed on a rolling basis rather than relying indefinitely on a
+single historical model.
+</p>
+
+</section>
+
+
+
+<!-- =====================================================
+     07 REPRODUCIBILITY
+===================================================== -->
+
+<section id="reproducibility">
+
+<div class="section-number">
+07 · Reproducibility
+</div>
+
+<h2>
+Inspect the research workflow
+</h2>
+
+<p class="lead">
+The capstone was developed incrementally across the internship. Each
+notebook represents a stage of the research workflow, from framing the
+question to producing the final action playbook.
+</p>
+
+
+<div class="notebook-list">
+
+
+<a class="notebook"
+href="https://github.com/Uzair6925/FlyRank-ML-internship/blob/main/work/notebooks/w01_research_question.ipynb"
+target="_blank">
+
+<strong>
+w01_research_question.ipynb
+</strong>
+
+<span>
+Research question and decision framing →
+</span>
+
+</a>
+
+
+<a class="notebook"
+href="https://github.com/Uzair6925/FlyRank-ML-internship/blob/main/work/notebooks/w02_ml_task_framing.ipynb"
+target="_blank">
+
+<strong>
+w02_ml_task_framing.ipynb
+</strong>
+
+<span>
+Task type, target and evaluation framing →
+</span>
+
+</a>
+
+
+<a class="notebook"
+href="https://github.com/Uzair6925/FlyRank-ML-internship/blob/main/work/notebooks/w03_data_contract.ipynb"
+target="_blank">
+
+<strong>
+w03_data_contract.ipynb
+</strong>
+
+<span>
+Data contract and warehouse verification →
+</span>
+
+</a>
+
+
+<a class="notebook"
+href="https://github.com/Uzair6925/FlyRank-ML-internship/blob/main/work/notebooks/w04_baseline_score.ipynb"
+target="_blank">
+
+<strong>
+w04_baseline_score.ipynb
+</strong>
+
+<span>
+Transparent baseline and ranking benchmark →
+</span>
+
+</a>
+
+
+<a class="notebook"
+href="https://github.com/Uzair6925/FlyRank-ML-internship/blob/main/work/notebooks/w05_model.ipynb"
+target="_blank">
+
+<strong>
+w05_model.ipynb
+</strong>
+
+<span>
+Logistic Regression model and grouped evaluation →
+</span>
+
+</a>
+
+
+<a class="notebook"
+href="https://github.com/Uzair6925/FlyRank-ML-internship/blob/main/work/notebooks/w06_validation_audit.ipynb"
+target="_blank">
+
+<strong>
+w06_validation_audit.ipynb
+</strong>
+
+<span>
+Validation design, leakage audit and claim review →
+</span>
+
+</a>
+
+
+<a class="notebook"
+href="https://github.com/Uzair6925/FlyRank-ML-internship/blob/main/work/notebooks/w07_action_playbook.ipynb"
+target="_blank">
+
+<strong>
+w07_action_playbook.ipynb
+</strong>
+
+<span>
+Ranked action queue and archetype recommendations →
+</span>
+
+</a>
+
+
+<a class="notebook"
+href="https://github.com/Uzair6925/FlyRank-ML-internship/blob/main/work/notebooks/capstone.ipynb"
+target="_blank">
+
+<strong>
+capstone.ipynb
+</strong>
+
+<span>
+Capstone analysis and final research artifact →
+</span>
+
+</a>
+
+
+</div>
+
+
+<h3>
+Project repository
+</h3>
+
+<p>
+The complete project repository contains the research notebooks and
+supporting work:
+</p>
+
+<p>
+
+<a
+href="https://github.com/Uzair6925/FlyRank-ML-internship"
+target="_blank">
+
+View the FlyRank ML Internship repository →
+
+</a>
+
+</p>
+
+
+<h3>
+Reproducibility principles
+</h3>
+
+<p>
+The reported results are intended to be traceable to the corresponding
+analysis notebooks rather than manually invented for the paper. Model
+training uses fixed random-state settings where applicable, and the
+validation design is explicitly documented so that the reader can inspect
+how the reported comparison was produced.
+</p>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     ACKNOWLEDGMENTS
+===================================================== -->
+
+<footer>
+
+<div class="footer-inner">
+
+<h2>
+Acknowledgments &amp; Data Credit
+</h2>
+
+<div class="footer-credit">
+
+<p>
+<strong>
+Built on the FlyRank ML Internship dataset.
+</strong>
+</p>
+
+<p>
+The search-performance data used in this capstone was provided as part of
+the FlyRank ML Internship dataset and was used for educational and
+research purposes within the internship project.
+</p>
+
+<p>
+Visit:
+<a
+href="https://flyrank.ai"
+target="_blank">
+FlyRankAi
+</a>
+</p>
+
+</div>
+
+
+<p>
+This research artifact was developed as part of the Machine Learning track
+of the FlyRank ML Internship. The work focuses on building a reproducible
+search-intelligence workflow, evaluating it with leakage-aware validation,
+and communicating the resulting evidence using honest,
+decision-support-oriented language.
+</p>
+
+
+<div class="footer-meta">
+
+© 2026 Uzair Ahmed · FlyRank ML Internship ·
+Refresh / Content Opportunity Scoring
+
+</div>
+
+</div>
+
+</footer>
+
+
+</body>
+</html>
